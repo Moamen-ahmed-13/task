@@ -22,7 +22,7 @@ class MyApp extends StatelessWidget {
     return GetMaterialApp(
       initialBinding: Binding(),
       debugShowCheckedModeBanner: false,
-      initialRoute: AppRoutes.signinScreen,
+      initialRoute: AppRoutes.controlView,
       getPages: AppRoutes.routes,
     );
   }

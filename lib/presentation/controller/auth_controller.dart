@@ -7,10 +7,18 @@ class AuthController extends GetxController {
   final GoogleSignIn _googleSignIn = GoogleSignIn(scopes: ['email']);
   final FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
   String? email, password, name;
+  Rxn<User?> firebaseUser = Rxn<User>();
+
+  String? get user => firebaseUser.value?.email;
 
   @override
   void onInit() {
     super.onInit();
+    firebaseUser.bindStream(_firebaseAuth.authStateChanges());
+    // if (firebaseUser.value != null) {
+    //         getCurrentUserData(firebaseUser.value!.uid);
+
+    // }
   }
 
   @override
@@ -69,4 +77,6 @@ class AuthController extends GetxController {
   }
 
   Future<void> saveUser(UserCredential userCredential) async {}
+
+  void getCurrentUserData(String uid) async {}
 }
