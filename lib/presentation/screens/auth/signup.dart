@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:task/presentation/controller/auth_controller.dart';
 import 'package:task/presentation/widgets/app_button.dart';
 import 'package:task/presentation/widgets/custom_text_form_field.dart';
 
-class SignupScreen extends StatelessWidget {
+class SignupScreen extends GetWidget<AuthController> {
   SignupScreen({super.key});
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
@@ -84,7 +85,7 @@ class SignupScreen extends StatelessWidget {
                               return null;
                             },
                             onSaved: (value) {
-                              // controller.email = value!;
+                              controller.email = value!;
                             },
                           ),
                           SizedBox(height: 15),
@@ -99,7 +100,7 @@ class SignupScreen extends StatelessWidget {
                               return null;
                             },
                             onSaved: (value) {
-                              // controller.password = value!;
+                              controller.password = value!;
                             },
                           ),
                           SizedBox(height: 60),
@@ -107,7 +108,7 @@ class SignupScreen extends StatelessWidget {
                             onPressed: () {
                               _formKey.currentState!.save();
                               if (_formKey.currentState!.validate()) {
-                                // controller.emailAndPasswordSignUp();
+                                controller.createUserWithEmailAndPassword();
                               }
                             },
                             text: 'SIGN UP',

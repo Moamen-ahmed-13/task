@@ -79,7 +79,7 @@ class SigninScreen extends GetWidget<AuthController> {
                               return null;
                             },
                             onSaved: (value) {
-                              // controller.email = value!;
+                              controller.email = value!;
                             },
                           ),
                           SizedBox(height: 40),
@@ -94,7 +94,7 @@ class SigninScreen extends GetWidget<AuthController> {
                               return null;
                             },
                             onSaved: (value) {
-                              // controller.password = value!;
+                              controller.password = value!;
                             },
                           ),
                           Align(
@@ -117,8 +117,7 @@ class SigninScreen extends GetWidget<AuthController> {
                             onPressed: () {
                               _formKey.currentState!.save();
                               if (_formKey.currentState!.validate()) {
-                                // controller.emailAndPasswordSignIn();
-                                Get.toNamed(Routes.homeScreen);
+                                controller.signInWithEmailAndPassword();
                               }
                             },
                             text: 'SIGN IN',
@@ -142,8 +141,6 @@ class SigninScreen extends GetWidget<AuthController> {
                     _formKey.currentState!.save();
 
                     controller.signInWithGoogle();
-
-                    
                   },
                   image: 'assets/google.png',
                   text: '  Continue with Google',
