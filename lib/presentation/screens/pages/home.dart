@@ -15,7 +15,7 @@ class HomeScreen extends GetWidget<AuthController> {
         child: Scaffold(
       backgroundColor: Colors.white,
       body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 15.0),
+        padding: const EdgeInsets.symmetric(horizontal: 15.0, vertical: 20),
         child: Column(
           children: [
             Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
@@ -35,7 +35,7 @@ class HomeScreen extends GetWidget<AuthController> {
                     style: TextStyle(color: primaryColor),
                   )),
             ]),
-            SizedBox(height: MediaQuery.of(context).size.height * 0.4),
+            SizedBox(height: MediaQuery.of(context).size.height * 0.35),
             Center(
               child: AppButton(
                   text: "Home",

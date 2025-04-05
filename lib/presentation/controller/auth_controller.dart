@@ -69,14 +69,9 @@ class AuthController extends GetxController {
             email: email!,
             password: password!,
           )
-          .then((value) => saveUser(value));
-      Get.toNamed(Routes.homeScreen);
+          .then((value) => Get.toNamed(Routes.homeScreen));
     } catch (e) {
       Get.snackbar('Error', e.toString());
     }
   }
-
-  Future<void> saveUser(UserCredential userCredential) async {}
-
-  void getCurrentUserData(String uid) async {}
 }
