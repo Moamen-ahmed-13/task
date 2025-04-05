@@ -1,14 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:task/core/constants.dart';
-import 'package:task/presentation/screens/auth/signup.dart';
-import 'package:task/presentation/screens/pages/home.dart';
+import 'package:task/core/routes/routes.dart';
 import 'package:task/presentation/widgets/app_button.dart';
 import 'package:task/presentation/widgets/custom_text_form_field.dart';
 
 class ForgetPasswordScreen extends StatelessWidget {
   ForgetPasswordScreen({super.key});
-  GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {
@@ -64,6 +62,7 @@ class ForgetPasswordScreen extends StatelessWidget {
                               if (value!.isEmpty) {
                                 return 'Please enter your email';
                               }
+                              return null;
                             },
                             onSaved: (value) {
                               // controller.email = value!;
@@ -76,7 +75,7 @@ class ForgetPasswordScreen extends StatelessWidget {
                             onPressed: () {
                               _formKey.currentState!.save();
                               if (_formKey.currentState!.validate()) {
-                                Get.to(() => HomeScreen());
+                                 Get.toNamed(Routes.homeScreen);
                               }
                             },
                           ),

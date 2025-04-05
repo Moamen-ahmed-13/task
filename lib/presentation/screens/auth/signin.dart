@@ -1,16 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:task/core/constants.dart';
-import 'package:task/presentation/screens/auth/forget_password.dart';
-import 'package:task/presentation/screens/auth/signup.dart';
-import 'package:task/presentation/screens/pages/home.dart';
+import 'package:task/core/routes/routes.dart';
 import 'package:task/presentation/widgets/app_button.dart';
 import 'package:task/presentation/widgets/custom_button.dart';
 import 'package:task/presentation/widgets/custom_text_form_field.dart';
 
 class SigninScreen extends StatelessWidget {
   SigninScreen({super.key});
-  GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {
@@ -57,7 +55,7 @@ class SigninScreen extends StatelessWidget {
                                 ),
                                 TextButton(
                                     onPressed: () {
-                                      Get.to(() => SignupScreen());
+                                      Get.toNamed(Routes.signupScreen);
                                     },
                                     child: Text(
                                       'Sign Up',
@@ -77,6 +75,7 @@ class SigninScreen extends StatelessWidget {
                               if (value!.isEmpty) {
                                 return 'Please enter your email';
                               }
+                              return null;
                             },
                             onSaved: (value) {
                               // controller.email = value!;
@@ -91,6 +90,7 @@ class SigninScreen extends StatelessWidget {
                               if (value!.isEmpty) {
                                 return 'Please enter your password';
                               }
+                              return null;
                             },
                             onSaved: (value) {
                               // controller.password = value!;
@@ -100,7 +100,7 @@ class SigninScreen extends StatelessWidget {
                             alignment: Alignment.centerRight,
                             child: TextButton(
                               onPressed: () {
-                                Get.to(() => ForgetPasswordScreen());
+                                Get.toNamed(Routes.forgetPasswordScreen);
                               },
                               child: Text(
                                 'Forgot Password?',
@@ -117,7 +117,7 @@ class SigninScreen extends StatelessWidget {
                               _formKey.currentState!.save();
                               if (_formKey.currentState!.validate()) {
                                 // controller.emailAndPasswordSignIn();
-                                Get.to(() => HomeScreen());
+                                Get.toNamed(Routes.homeScreen);
                               }
                             },
                             text: 'SIGN IN',
@@ -127,24 +127,24 @@ class SigninScreen extends StatelessWidget {
                     ),
                   ),
                 ),
-                // SizedBox(height: 20),
-                // Text(
-                //   '-OR-',
-                //   style: TextStyle(
-                //     fontWeight: FontWeight.bold,
-                //     fontSize: 20,
-                //   ),
-                // ),
-                // SizedBox(height: 20),
-                // CustomButton(
-                //   onPressed: () {
-                //     _formKey.currentState!.save();
+                SizedBox(height: 20),
+                Text(
+                  '-OR-',
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 20,
+                  ),
+                ),
+                SizedBox(height: 20),
+                CustomButton(
+                  onPressed: () {
+                    _formKey.currentState!.save();
 
-                //     // controller.googleSignIn();
-                //   },
-                //   image: 'assets/images/google.png',
-                //   text: '  Continue with Google',
-                // ),
+                    // controller.googleSignIn();
+                  },
+                  image: 'assets/google.png',
+                  text: '  Continue with Google',
+                ),
                 // SizedBox(height: 20),
                 // CustomButton(
                 //   onPressed: () {

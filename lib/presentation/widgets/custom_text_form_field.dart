@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:task/core/constants.dart';
 
 class CustomTextFormField extends StatelessWidget {
-  CustomTextFormField({
+  const CustomTextFormField({
     super.key,
     required this.fieldName,
     required this.hintText,

@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:task/core/constants.dart';
+import 'package:task/presentation/widgets/app_button.dart';
 import 'package:task/presentation/widgets/custom_text_form_field.dart';
 
 class SignupScreen extends StatelessWidget {
   SignupScreen({super.key});
-  GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {
@@ -68,6 +68,7 @@ class SignupScreen extends StatelessWidget {
                               if (value!.isEmpty) {
                                 return 'Please enter your name';
                               }
+                              return null;
                             },
                             secured: false,
                           ),
@@ -80,6 +81,7 @@ class SignupScreen extends StatelessWidget {
                               if (value!.isEmpty) {
                                 return 'Please enter your email';
                               }
+                              return null;
                             },
                             onSaved: (value) {
                               // controller.email = value!;
@@ -94,28 +96,21 @@ class SignupScreen extends StatelessWidget {
                               if (value!.isEmpty) {
                                 return 'Please enter your password';
                               }
+                              return null;
                             },
                             onSaved: (value) {
                               // controller.password = value!;
                             },
                           ),
                           SizedBox(height: 60),
-                          MaterialButton(
+                          AppButton(
                             onPressed: () {
                               _formKey.currentState!.save();
                               if (_formKey.currentState!.validate()) {
                                 // controller.emailAndPasswordSignUp();
                               }
                             },
-                            child: Text(
-                              'SIGN UP',
-                              style: TextStyle(
-                                color: Colors.white,
-                              ),
-                            ),
-                            color: primaryColor,
-                            minWidth: double.infinity,
-                            height: 50,
+                            text: 'SIGN UP',
                           )
                         ],
                       ),

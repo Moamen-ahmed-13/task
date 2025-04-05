@@ -12,6 +12,11 @@ class CustomButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialButton(
       onPressed: onPressed,
+      height: 50,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(5),
+        side: BorderSide(color: Colors.grey.shade300),
+      ),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
@@ -23,11 +28,6 @@ class CustomButton extends StatelessWidget {
             style: TextStyle(color: Colors.black54),
           ),
         ],
-      ),
-      height: 50,
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(5),
-        side: BorderSide(color: Colors.grey.shade300),
       ),
     );
   }
