@@ -2,8 +2,8 @@ import 'package:get/get.dart';
 import 'package:task/presentation/screens/auth/forget_password.dart';
 import 'package:task/presentation/screens/auth/signin.dart';
 import 'package:task/presentation/screens/auth/signup.dart';
-import 'package:task/presentation/screens/home/details.dart';
-import 'package:task/presentation/screens/home/home.dart';
+import 'package:task/presentation/screens/pages/details.dart';
+import 'package:task/presentation/screens/pages/home.dart';
 
 class AppRoutes {
   static const signinScreen = Routes.signinScreen;
