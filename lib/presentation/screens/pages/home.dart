@@ -3,7 +3,6 @@ import 'package:get/get.dart';
 import 'package:task/core/constants.dart';
 import 'package:task/core/routes/routes.dart';
 import 'package:task/presentation/controller/auth_controller.dart';
-import 'package:task/presentation/screens/auth/signup.dart';
 import 'package:task/presentation/widgets/app_button.dart';
 
 class HomeScreen extends GetWidget<AuthController> {
