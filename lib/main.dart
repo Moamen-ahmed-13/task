@@ -1,6 +1,7 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:task/core/bindings/bindings.dart';
 import 'package:task/core/routes/routes.dart';
 import 'package:task/firebase_options.dart';
 
@@ -19,6 +20,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
+      initialBinding: Binding(),
       debugShowCheckedModeBanner: false,
       initialRoute: AppRoutes.signinScreen,
       getPages: AppRoutes.routes,

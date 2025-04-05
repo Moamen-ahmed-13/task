@@ -2,11 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:task/core/constants.dart';
 import 'package:task/core/routes/routes.dart';
+import 'package:task/presentation/controller/auth_controller.dart';
 import 'package:task/presentation/widgets/app_button.dart';
 import 'package:task/presentation/widgets/custom_button.dart';
 import 'package:task/presentation/widgets/custom_text_form_field.dart';
 
-class SigninScreen extends StatelessWidget {
+class SigninScreen extends GetWidget<AuthController> {
   SigninScreen({super.key});
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
@@ -140,21 +141,13 @@ class SigninScreen extends StatelessWidget {
                   onPressed: () {
                     _formKey.currentState!.save();
 
-                    // controller.googleSignIn();
+                    controller.signInWithGoogle();
+
+                    
                   },
                   image: 'assets/google.png',
                   text: '  Continue with Google',
                 ),
-                // SizedBox(height: 20),
-                // CustomButton(
-                //   onPressed: () {
-                //     _formKey.currentState!.save();
-
-                //     // controller.facebookSignIn();
-                //   },
-                //   image: 'assets/images/facebook.png',
-                //   text: 'Continue with Facebook',
-                // ),
               ],
             ),
           ),
