@@ -10,6 +10,32 @@ class DetailsScreen extends GetWidget<DetailsController> {
     return Scaffold(
       backgroundColor: Colors.grey.shade200,
       appBar: _buildAppBar(),
+      body: Container(
+        padding: const EdgeInsets.all(15),
+        decoration: BoxDecoration(
+          color: Colors.white,
+          borderRadius: const BorderRadius.only(
+            topLeft: Radius.circular(40),
+            topRight: Radius.circular(40),
+          ),
+        ),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            const SizedBox(height: 20),
+            _buildTabBar(),
+            const SizedBox(height: 20),
+
+            Text('8-Days Brazil Adventure',
+                style: TextStyle(
+                    color: Colors.black,
+                    fontSize: 17,
+                    fontWeight: FontWeight.w600)),
+            // Expanded(child: _buildScheduleList()),
+            // _buildBookButton(),
+          ],
+        ),
+      ),
     );
   }
 
@@ -47,6 +73,42 @@ class DetailsScreen extends GetWidget<DetailsController> {
           onPressed: () {},
         ),
       ],
+    );
+  }
+
+  Widget _buildTabBar() {
+    return Container(
+      height: 35,
+      width: double.infinity,
+      child: ListView(
+        shrinkWrap: true,
+        scrollDirection: Axis.horizontal,
+        children: [
+          _tabButton(true, 'Tour Schedule'),
+          SizedBox(width: 8),
+          _tabButton(false, 'Accommodation'),
+          SizedBox(width: 8),
+          _tabButton(false, 'Booking Details'),
+        ],
+      ),
+    );
+  }
+
+  Container _tabButton(bool isSelected, String title) {
+    return Container(
+      padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+      decoration: BoxDecoration(
+        color: isSelected ? Colors.black : Colors.grey.shade200,
+        borderRadius: BorderRadius.circular(16),
+      ),
+      child: Text(
+        title,
+        style: TextStyle(
+          color: isSelected ? Colors.white : Colors.black,
+          fontSize: 14,
+          fontWeight: isSelected ? FontWeight.bold : FontWeight.normal,
+        ),
+      ),
     );
   }
 }
