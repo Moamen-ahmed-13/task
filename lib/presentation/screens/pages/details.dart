@@ -33,7 +33,7 @@ class DetailsScreen extends GetWidget<DetailsController> {
                     fontSize: 17,
                     fontWeight: FontWeight.w600)),
             Expanded(child: _buildScheduleList()),
-            // _buildBookButton(),
+            _buildBookButton(),
           ],
         ),
       ),
@@ -174,12 +174,26 @@ class DetailsScreen extends GetWidget<DetailsController> {
 
   Widget _scheduleDetailItem(String time, String description) {
     return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 4),
-      child: RichText(text: TextSpan(children: [
-        TextSpan(
-            text: '$time: ',style: TextStyle(color: Colors.grey)),
-            TextSpan(text: description,style: TextStyle(color: Colors.black)),
-      ]))
+        padding: const EdgeInsets.symmetric(vertical: 4),
+        child: RichText(
+            text: TextSpan(children: [
+          TextSpan(text: '$time: ', style: TextStyle(color: Colors.grey)),
+          TextSpan(text: description, style: TextStyle(color: Colors.black)),
+        ])));
+  }
+
+  Widget _buildBookButton() {
+    return Padding(
+      padding: const EdgeInsets.all(15),
+    child: ElevatedButton(onPressed: () {
+      
+    },style: ElevatedButton.styleFrom(
+          backgroundColor: Colors.black,
+          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(32)),
+          minimumSize: const Size(double.infinity, 50),
+        ),
+        child: const Text("Book a tour", style: TextStyle(color: Colors.white, fontSize: 16)),
+      ),
     );
   }
 }
