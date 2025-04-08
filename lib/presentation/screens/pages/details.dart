@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:task/domain/model/details_model.dart';
 import 'package:task/presentation/controller/details_controller.dart';
 
 class DetailsScreen extends GetWidget<DetailsController> {
@@ -31,7 +32,7 @@ class DetailsScreen extends GetWidget<DetailsController> {
                     color: Colors.black,
                     fontSize: 17,
                     fontWeight: FontWeight.w600)),
-            // Expanded(child: _buildScheduleList()),
+            Expanded(child: _buildScheduleList()),
             // _buildBookButton(),
           ],
         ),
@@ -109,6 +110,76 @@ class DetailsScreen extends GetWidget<DetailsController> {
           fontWeight: isSelected ? FontWeight.bold : FontWeight.normal,
         ),
       ),
+    );
+  }
+
+  Widget _buildScheduleList() {
+    return Obx(() {
+      return ListView.builder(
+        itemCount: controller.tourDays.length,
+        itemBuilder: (context, index) =>
+            _buildScheduleItem(index, controller.tourDays[index]),
+      );
+    });
+  }
+
+  Widget _buildScheduleItem(int index, DetailsModel tourDay) {
+    return Card(
+      elevation: 0,
+      shape: BeveledRectangleBorder(borderRadius: BorderRadius.circular(16)),
+      child: Column(
+        children: [
+          ListTile(
+            leading: ClipRRect(
+              borderRadius: BorderRadius.circular(8),
+              child: Image.network(tourDay.imagePath,
+                  width: 64, height: 64, fit: BoxFit.cover),
+            ),
+            title: Text(
+              tourDay.title,
+              style: const TextStyle(color: Colors.grey),
+            ),
+            subtitle:
+                Text(tourDay.day, style: const TextStyle(color: Colors.black)),
+            trailing: Icon(
+                tourDay.isExpanded
+                    ? Icons.keyboard_arrow_up
+                    : Icons.keyboard_arrow_down,
+                color: Colors.black),
+            onTap: () {
+              controller.toggleExpand(index);
+            },
+          ),
+          AnimatedSize(
+            duration: const Duration(milliseconds: 300),
+            curve: Curves.fastOutSlowIn,
+            child: tourDay.isExpanded
+                ? Padding(
+                    padding: const EdgeInsets.all(12),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        _scheduleDetailItem('Morning', tourDay.morning),
+                        _scheduleDetailItem('Afternoon', tourDay.afternoon),
+                        _scheduleDetailItem('Evening', tourDay.evening),
+                      ],
+                    ),
+                  )
+                : const SizedBox.shrink(),
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget _scheduleDetailItem(String time, String description) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 4),
+      child: RichText(text: TextSpan(children: [
+        TextSpan(
+            text: '$time: ',style: TextStyle(color: Colors.grey)),
+            TextSpan(text: description,style: TextStyle(color: Colors.black)),
+      ]))
     );
   }
 }
