@@ -19,6 +19,14 @@ class DetailsController extends GetxController {
       evening: "Enjoy a night at a samba club",
       imagePath: "assets/rio.jpg",
     ),
+    DetailsModel(
+      day: "Day 3",
+      title: "Rio de Janeiro Highlights",
+      morning: "Explore famous landmarks in the city",
+      afternoon: "Visit Christ the Redeemer and Sugarloaf Mountain",
+      evening: "Enjoy a night at a samba club",
+      imagePath: "assets/rio2.jpg",
+    ),
   ].obs;
 
   void toggleExpand(int index) {

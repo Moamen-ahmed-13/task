@@ -6,6 +6,6 @@ class Binding extends Bindings {
   @override
   void dependencies() {
     Get.lazyPut(() => AuthController());
-    Get.lazyPut(() => DetailsController());
+    Get.lazyPut(() => DetailsController(),fenix: true);
   }
 }

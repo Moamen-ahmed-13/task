@@ -12,6 +12,7 @@ class DetailsScreen extends GetWidget<DetailsController> {
       backgroundColor: Colors.grey.shade200,
       appBar: _buildAppBar(),
       body: Container(
+        margin: const EdgeInsets.only(top: 30),
         padding: const EdgeInsets.all(15),
         decoration: BoxDecoration(
           color: Colors.white,
@@ -51,7 +52,9 @@ class DetailsScreen extends GetWidget<DetailsController> {
           Icons.arrow_back_ios_new,
           color: Colors.black,
         ),
-        onPressed: () {},
+        onPressed: () {
+          Get.back();
+        },
       ),
       title: const Column(
         crossAxisAlignment: CrossAxisAlignment.center,

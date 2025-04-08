@@ -1,4 +1,5 @@
 import 'package:get/get.dart';
+import 'package:task/core/bindings/bindings.dart';
 import 'package:task/presentation/screens/auth/forget_password.dart';
 import 'package:task/presentation/screens/auth/signin.dart';
 import 'package:task/presentation/screens/auth/signup.dart';
@@ -33,6 +34,7 @@ class AppRoutes {
     GetPage(
       name: Routes.detailsScreen,
       page: () => DetailsScreen(),
+      binding: Binding(),
     ),
   ];
 }
