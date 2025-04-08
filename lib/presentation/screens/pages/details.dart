@@ -26,12 +26,12 @@ class DetailsScreen extends GetWidget<DetailsController> {
             const SizedBox(height: 20),
             _buildTabBar(),
             const SizedBox(height: 20),
-
             Text('8-Days Brazil Adventure',
                 style: TextStyle(
                     color: Colors.black,
                     fontSize: 17,
                     fontWeight: FontWeight.w600)),
+            const SizedBox(height: 20),
             Expanded(child: _buildScheduleList()),
             _buildBookButton(),
           ],
@@ -126,21 +126,26 @@ class DetailsScreen extends GetWidget<DetailsController> {
   Widget _buildScheduleItem(int index, DetailsModel tourDay) {
     return Card(
       elevation: 0,
-      shape: BeveledRectangleBorder(borderRadius: BorderRadius.circular(16)),
+      shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(15),
+          side: BorderSide(color: Colors.grey.shade300)),
       child: Column(
         children: [
           ListTile(
+            tileColor: Colors.white,
+            focusColor: Colors.grey.shade200,
             leading: ClipRRect(
               borderRadius: BorderRadius.circular(8),
-              child: Image.network(tourDay.imagePath,
+              child: Image.asset(tourDay.imagePath,
                   width: 64, height: 64, fit: BoxFit.cover),
             ),
             title: Text(
-              tourDay.title,
-              style: const TextStyle(color: Colors.grey),
+              tourDay.day,
+              style: const TextStyle(color: Colors.grey, fontSize: 13),
             ),
-            subtitle:
-                Text(tourDay.day, style: const TextStyle(color: Colors.black)),
+            subtitle: Text(tourDay.title,
+                style: const TextStyle(
+                    color: Colors.black, fontWeight: FontWeight.w500)),
             trailing: Icon(
                 tourDay.isExpanded
                     ? Icons.keyboard_arrow_up
@@ -177,22 +182,30 @@ class DetailsScreen extends GetWidget<DetailsController> {
         padding: const EdgeInsets.symmetric(vertical: 4),
         child: RichText(
             text: TextSpan(children: [
-          TextSpan(text: '$time: ', style: TextStyle(color: Colors.grey)),
-          TextSpan(text: description, style: TextStyle(color: Colors.black)),
+          TextSpan(text: '$time\n', style: TextStyle(color: Colors.grey)),
+          TextSpan(
+              text: description,
+              style:
+                  TextStyle(color: Colors.black, fontWeight: FontWeight.w500)),
         ])));
   }
 
   Widget _buildBookButton() {
     return Padding(
       padding: const EdgeInsets.all(15),
-    child: ElevatedButton(onPressed: () {
-      
-    },style: ElevatedButton.styleFrom(
+      child: ElevatedButton(
+        onPressed: () {},
+        style: ElevatedButton.styleFrom(
           backgroundColor: Colors.black,
-          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(32)),
+          shape:
+              RoundedRectangleBorder(borderRadius: BorderRadius.circular(32)),
           minimumSize: const Size(double.infinity, 50),
         ),
-        child: const Text("Book a tour", style: TextStyle(color: Colors.white, fontSize: 16)),
+        child: const Text("Book a tour",
+            style: TextStyle(
+                color: Colors.white,
+                fontSize: 16,
+                fontWeight: FontWeight.w400)),
       ),
     );
   }
